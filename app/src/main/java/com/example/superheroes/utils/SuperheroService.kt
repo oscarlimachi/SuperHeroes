@@ -10,11 +10,8 @@ import retrofit2.http.Path
 interface SuperheroService {
     @GET("search/{name}")
     suspend fun findSuperheroesByName(@Path("name") name: String): SuperheroSearchResponse
-
-    @GET("{charcter-id}")
-    suspend fun findSuperheroById(@Path("charcter-id") id: String): Superhero
-
-
+    @GET("{character-id}")
+    suspend fun findSuperheroById(@Path("character-id") id: String): Superhero
     companion object {
         fun getInstance(): SuperheroService {
             val retrofit = Retrofit.Builder()
