@@ -1,8 +1,11 @@
 package com.example.superheroes.activities
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -40,6 +43,25 @@ var superheroList: List<Superhero> = emptyList()
         searchSuperheros("a")
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_main_menu,menu)
+
+        val menuItem = menu.findItem(R.id.menu_search)
+        val searchView = menuItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                searchSuperheros(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false            }
+        })
+
+        return true
+    }
+
 
     fun searchSuperheros(query: String){
         CoroutineScope(Dispatchers.IO).launch {
