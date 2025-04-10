@@ -1,5 +1,6 @@
 package com.example.superheroes.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
@@ -36,7 +37,11 @@ var superheroList: List<Superhero> = emptyList()
             insets
         }
         recyclerView = findViewById(R.id.recyclerview)
-        adapter = SuperheroAdapter(superheroList)
+        adapter = SuperheroAdapter(superheroList, {position ->
+            val superhero = superheroList[position]
+            val intent=Intent(this, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.SUPERHERO_ID, superhero.id)
+            startActivity(intent) })
         recyclerView.adapter=adapter
         recyclerView.layoutManager = GridLayoutManager(this,2)
 
