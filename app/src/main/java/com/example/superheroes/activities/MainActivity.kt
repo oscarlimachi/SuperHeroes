@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
-
+a
 lateinit var recyclerView: RecyclerView
 lateinit var adapter :SuperheroAdapter
 var superheroList: List<Superhero> = emptyList()
