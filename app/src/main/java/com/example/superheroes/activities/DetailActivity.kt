@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class DetailActivity : AppCompatActivity() {
 
     companion object{
-        val SUPERHERO_ID = "SUPERHERO_ID"
+        const val SUPERHERO_ID = "SUPERHERO_ID"
     }
     lateinit var nameTextView: TextView
     lateinit var avatarImageView: ImageView
@@ -30,6 +30,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_detail)
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
