@@ -2,6 +2,8 @@ package com.example.superheroes.activities
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -41,8 +43,24 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val id = intent.getStringExtra(SUPERHERO_ID)!!
-
         getSuperheroById(id)
+
+        //invocar a la navegacion y recibir pulsar
+        binding.bottomNavigationView.setOnItemSelectedListener { menuItem->
+            binding.contentBiography.visibility = View.GONE
+            binding.contentAppearance.visibility = View.GONE
+            binding.contentStats.visibility = View.GONE
+
+            when(menuItem.itemId){
+                R.id.menuBiography -> binding.contentBiography.visibility = View.VISIBLE
+                R.id.menuAppearance -> binding.contentAppearance.visibility = View.VISIBLE
+                R.id.menuStats -> binding.contentStats.visibility = View.VISIBLE
+            }
+            true
+        }
+
+        /*forzamos para a pulsar click para que se oculte*/
+        binding.bottomNavigationView.selectedItemId = R.id.menuBiography
 
     }
     fun getSuperheroById(id: String){
@@ -61,8 +79,13 @@ class DetailActivity : AppCompatActivity() {
         }
     }
     fun loadData(){
-        binding.nameTextView.text=superhero.name
+        supportActionBar?.title=superhero.name
+        supportActionBar?.subtitle=superhero.biography.realName
         Picasso.get().load(superhero.image.url).into(binding.avatarImageView)
+
+        binding.publisherTextView.text = superhero.biography.publisher
+        binding.placeOfBirthTextView.text = superhero.biography.placeOfBirth
+        binding.alignmentTextView.text = superhero.biography.alignment
     }
 
 

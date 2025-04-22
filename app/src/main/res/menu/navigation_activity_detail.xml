@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuBiography"
+        android:title="Biography"
+        android:icon="@drawable/ic_menu_biography"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:id="@+id/menuAppearance"
+        android:title="Appearance"
+        android:icon="@drawable/ic_menu_appearance"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:id="@+id/menuStats"
+        android:title="Stats"
+        android:icon="@drawable/menu_stats"
+        app:showAsAction="always">
+    </item>
+</menu>
