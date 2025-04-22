@@ -1,6 +1,7 @@
 package com.example.superheroes.activities
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.superheroes.R
 import com.example.superheroes.data.Superhero
+import com.example.superheroes.databinding.ActivityDetailBinding
 import com.example.superheroes.utils.SuperheroService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -20,8 +22,7 @@ class DetailActivity : AppCompatActivity() {
     companion object{
         const val SUPERHERO_ID = "SUPERHERO_ID"
     }
-    lateinit var nameTextView: TextView
-    lateinit var avatarImageView: ImageView
+    lateinit var binding: ActivityDetailBinding
     lateinit var superhero: Superhero
 
 
@@ -29,7 +30,8 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
+        binding= ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -37,8 +39,6 @@ class DetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        nameTextView=findViewById(R.id.nameTextView)
-        avatarImageView=findViewById(R.id.avatarImageView)
 
         val id = intent.getStringExtra(SUPERHERO_ID)!!
 
@@ -61,8 +61,8 @@ class DetailActivity : AppCompatActivity() {
         }
     }
     fun loadData(){
-        nameTextView.text=superhero.name
-        Picasso.get().load(superhero.image.url).into(avatarImageView)
+        binding.nameTextView.text=superhero.name
+        Picasso.get().load(superhero.image.url).into(binding.avatarImageView)
     }
 
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.superheroes.R
 import com.example.superheroes.adapters.SuperheroAdapter
 import com.example.superheroes.data.Superhero
+import com.example.superheroes.databinding.ActivityMainBinding
 import com.example.superheroes.utils.SuperheroService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,36 +22,38 @@ import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
-a
-lateinit var recyclerView: RecyclerView
-lateinit var adapter :SuperheroAdapter
-var superheroList: List<Superhero> = emptyList()
+
+    lateinit var binding: ActivityMainBinding
+
+    lateinit var adapter :SuperheroAdapter
+    var superheroList: List<Superhero> = emptyList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        recyclerView = findViewById(R.id.recyclerview)
+
         adapter = SuperheroAdapter(superheroList, {position ->
             val superhero = superheroList[position]
             val intent=Intent(this, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.SUPERHERO_ID, superhero.id)
             startActivity(intent) })
-        recyclerView.adapter=adapter
-        recyclerView.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerview.adapter=adapter
+        binding.recyclerview.layoutManager = GridLayoutManager(this,2)
 
         searchSuperheros("a")
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.activity_main_menu,menu)
+        menuInflater.inflate(R.menu.menu_activity_main,menu)
 
         val menuItem = menu.findItem(R.id.menu_search)
         val searchView = menuItem.actionView as SearchView

@@ -14,19 +14,20 @@
         android:layout_margin="8dp"
         tools:src="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
-        android:layout_gravity="center"
-        >
-
+        android:layout_gravity="center">
     </ImageView>
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="Nombre del Superheroe">
+        android:layout_height="wrap_content">
 
     </TextView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </LinearLayout>
