@@ -100,9 +100,10 @@ class DetailActivity : AppCompatActivity() {
         binding.contentBiography.occupationTextView.text = superhero.work.occupation
         binding.contentBiography.baseTextView.text = superhero.work.base
         //Appearance
+        //binding.contentAppearance.raceTextView.text = superhero.getAppearanceRace()
         with(superhero.appearance){
             binding.contentAppearance.genderTextView.text = gender
-            binding.contentAppearance.raceTextView.text = race
+            binding.contentAppearance.raceTextView.text = superhero.getAppearanceRace()
             binding.contentAppearance.eyeColorTextView.text = eyeColor
             binding.contentAppearance.hairColorTextView.text = hairColor
             binding.contentAppearance.heightTextView.text = height[1]

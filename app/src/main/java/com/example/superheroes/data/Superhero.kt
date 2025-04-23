@@ -28,6 +28,13 @@ data class Superhero(
             else -> R.color.alignment_color_neutral
         }
     }
+    fun getAppearanceRace() : String{
+        return when(appearance.race){
+            "null" ->"unknown"
+            else -> appearance.race
+
+        }
+    }
 }
 
 
@@ -61,10 +68,6 @@ class Appearance(
     @SerializedName("hair-color") val hairColor: String,
     val height: List<String>,
     val weight: List<String>
-
-
-
-
 )
 data class SuperheroSearchResponse(
     val results: List<Superhero>
