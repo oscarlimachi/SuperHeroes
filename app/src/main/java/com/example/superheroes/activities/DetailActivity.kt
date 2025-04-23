@@ -83,9 +83,15 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.subtitle=superhero.biography.realName
         Picasso.get().load(superhero.image.url).into(binding.avatarImageView)
 
+        //Biography
         binding.publisherTextView.text = superhero.biography.publisher
         binding.placeOfBirthTextView.text = superhero.biography.placeOfBirth
         binding.alignmentTextView.text = superhero.biography.alignment
+        //Appearance
+        //Stats
+        binding.intelligenceTextView.text = "${superhero.stats.intelligence.toIntOrNull() ?: 0}"
+        binding.intelligenceProgress.progress = superhero.stats.intelligence.toIntOrNull() ?: 0
+
     }
 
 
