@@ -40,156 +40,26 @@
                 android:layout_height="wrap_content"
                 app:menu="@menu/navigation_activity_detail">
             </com.google.android.material.bottomnavigation.BottomNavigationView>
-            <!--Biography-->
-            <LinearLayout
-                android:id="@+id/contentBiography"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:padding="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:text="Publisher:">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/publisherTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:layout_marginStart="4dp"
-                            android:textStyle="bold"
-                            android:text="DC Comics">
-                        </TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:text="Place of birth:">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/placeOfBirthTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:layout_marginStart="4dp"
-                            android:textStyle="bold"
-                            android:text="Kripton">
-                        </TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="textEnd"
-                            android:text="Alignment:">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/alignmentTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:layout_marginStart="4dp"
-                            android:textStyle="bold"
-                            android:text="Good">
-                        </TextView>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <!--Appearance-->
-            <LinearLayout
-                android:id="@+id/contentAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Appearance">
-                </Button>
-
-            </LinearLayout>
-            <!--Stats-->
-            <LinearLayout
-                android:id="@+id/contentStats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp">
-                <!--Intelligent--><LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Intelligence:">
-                    </TextView>
-                    <TextView
-                        android:id="@+id/intelligenceTextView"
-                        android:layout_width="48dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:textStyle="bold"
-                        android:text="100">
-                    </TextView>
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/intelligenceProgress"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:progress="30"
-                        android:layout_gravity="center_vertical">
-                    </com.google.android.material.progressindicator.LinearProgressIndicator>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-
+                <!--Biography-->
+                <include
+                    android:id="@+id/contentBiography"
+                    layout="@layout/detail_content_biography">
+                </include>
+                <!--Appearance-->
+                <include
+                    android:id="@+id/contentAppearance"
+                    layout="@layout/detail_content_appearance">
+                </include>
+                <!--Stats-->
+                <include
+                    android:id="@+id/contentPowerStats"
+                    layout="@layout/detail_content_power_stats">
+                </include>
+            </FrameLayout>
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
