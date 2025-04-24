@@ -47,6 +47,9 @@ dependencies {
     // Picasso
     implementation("com.squareup.picasso:picasso:2.8")
 
+    //gifAnimado Incio
+    implementation("com.airbnb.android:lottie:3.4.2")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

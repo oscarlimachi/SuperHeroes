@@ -30,7 +30,7 @@ data class Superhero(
     }
     fun getAppearanceRace() : String{
         return when(appearance.race){
-            "null" ->"unknown"
+            "null" ->"Unknown"
             else -> appearance.race
 
         }
